@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up - Gym Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your CSS styles here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('assets/img/gallery/image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .login-box {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: none;
+            outline: none;
+            transition: border 0.3s ease-in-out;
+        }
+        
+        .input-group label {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            color: #888;
+            font-size: 16px;
+            pointer-events: none;
+            transform: translateY(-50%);
+            transition: 0.3s ease-in-out;
+        }
+        
+        .input-group input:focus,
+        .input-group input:not(:placeholder-shown) {
+            border-color: #e67e22;
+        }
+        
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 5px;
+            font-size: 12px;
+            color: #e67e22;
+        }
+        
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .radio-label {
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .radio-label input {
+            margin-right: 10px;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #950109;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .login-btn:hover {
+            background-color: #950109;
+        }
+        
+        .links {
+            margin-top: 15px;
+        }
+        
+        .links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .links a:hover {
+            color: #950109;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2 id="form-title">Login</h2>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="form">
+                <div class="input-group">
+                    <input type="text" id="login-username" name="username" required>
+                    <label for="login-username">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="login-password" name="password" required>
+                    <label for="login-password">Password</label>
+                </div>
+                
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="user-type" value="trainer" required>
+                        Trainer
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="user-type" value="trainee" required>
+                        Trainee
+                    </label>
+                </div>
+
+                <button type="button" class="login-btn" onclick="window.location.href='index.html'">Login</button>
+                
+                <div class="links">
+                    <a href="#" id="toggle-signup">New User? Sign Up</a>
+                </div>
+            </form>
+
+            <!-- Sign Up Form (Hidden by default) -->
+            <form id="signup-form" class="form" style="display: none;">
+                <h2 id="form-title">Sign Up</h2>
+                <div class="input-group">
+                    <input type="text" id="signup-username" name="username" required>
+                    <label for="signup-username">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="signup-email" name="email" required>
+                    <label for="signup-email">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signup-password" name="password" required>
+                    <label for="signup-password">Password</label>
+                </div>
+                
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="signup-user-type" value="trainer" required>
+                        Trainer
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="signup-user-type" value="trainee" required>
+                        Trainee
+                    </label>
+                </div>
+
+                <button type="button" class="login-btn" onclick="window.location.href='loginPage.html'">Sign Up</button>
+                
+                <div class="links">
+                    <a href="#" id="toggle-login">Already have an account? Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggle-signup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('form-title').textContent = 'Sign Up';
+        });
+    
+        document.getElementById('toggle-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('form-title').textContent = 'Login';
+        });
+    </script>
+</body>
+</html>
